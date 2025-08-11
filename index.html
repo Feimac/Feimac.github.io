@@ -10,23 +10,23 @@
     /* ---------- Design tokens ---------- */
     :root{
       --bg: #f5f5f5;
-      --text: #222222;           /* alto contraste no fundo claro */
+      --text: #222222;
       --muted: #555555;
       --card: #ffffff;
       --border: #cfcfcf;
 
-      /* Links AA no fundo claro (#f5f5f5 / #fff) */
-      --link: #0645ad;          /* ≈ Wikipedia blue (AA) */
+      /* Links AA */
+      --link: #0645ad;
       --link-hover: #07215f;
-      --link-visited: #3b0083;  /* AA em bg claro */
+      --link-visited: #3b0083;
 
       /* Foco acessível */
       --focus: #1a73e8;
 
-      /* Footer (bg escuro) */
+      /* Footer */
       --footer-bg: #333333;
       --footer-fg: #ffffff;
-      --footer-link: #e3f2ff;   /* AA sobre #333 */
+      --footer-link: #e3f2ff;
       --footer-link-hover: #cfe3ff;
     }
 
@@ -77,10 +77,11 @@
     nav ul{
       list-style: none;
       display: flex;
-      gap: 16px;
+      gap: 12px;         /* espaço entre os botões */
       justify-content: center;
       padding: 0;
       margin: 12px 0 0;
+      flex-wrap: wrap;   /* quebra linha no mobile */
     }
 
     main{ padding: 20px 16px 40px; }
@@ -111,10 +112,10 @@
       padding: 14px 10px;
     }
 
-    /* ---------- Links ---------- */
+    /* ---------- Links globais ---------- */
     a{
       color: var(--link);
-      text-decoration: underline;  /* não depende só de cor */
+      text-decoration: underline;
     }
     a:hover, a:focus-visible{
       color: var(--link-hover);
@@ -129,6 +130,31 @@
     footer a:hover, footer a:focus-visible{
       color: var(--footer-link-hover);
       background: transparent;
+    }
+
+    /* ---------- Menu como botões ---------- */
+    nav ul li a{
+      display: inline-block;
+      padding: 8px 14px;
+      background-color: #0645ad; /* alto contraste */
+      color: #ffffff;
+      border-radius: 6px;
+      text-decoration: none;      /* sem sublinhado nos botões */
+      font-weight: 600;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+    nav ul li a:hover,
+    nav ul li a:focus-visible{
+      background-color: #07215f;
+      transform: translateY(-2px);
+    }
+    nav ul li a:active{
+      transform: translateY(0);
+    }
+
+    /* ---------- Ajustes responsivos ---------- */
+    @media (max-width: 480px){
+      nav ul li a{ padding: 10px 16px; }
     }
   </style>
 </head>
@@ -159,8 +185,29 @@
       <article class="projeto" aria-labelledby="p1">
         <h3 id="p1">Mapa de Rotas de Transporte</h3>
         <p>Visualização interativa de rotas de transporte público usando Folium e Pandas.</p>
-        <a href="https://github.com/seuusuario/repositorio"
-           target="_blank" rel="noopener">Ver no GitHub</a>
+        <a href="https://github.com/seuusuario/repositorio" target="_blank" rel="noopener">Ver no GitHub</a>
       </article>
 
-      <article class="projeto"
+      <article class="projeto" aria-labelledby="p2">
+        <h3 id="p2">Reconstrução de Imagens com CGNE/CGNR</h3>
+        <p>Algoritmos para reconstrução de imagens a partir de sinais aplicando métodos iterativos.</p>
+        <a href="https://github.com/seuusuario/repositorio" target="_blank" rel="noopener">Ver no GitHub</a>
+      </article>
+    </section>
+
+    <section id="contato" aria-labelledby="titulo-contato">
+      <h2 id="titulo-contato">Contato</h2>
+      <p>Email: <a href="mailto:felipescamillo2018@gmail.com">felipescamillo2018@gmail.com</a></p>
+      <p>LinkedIn:
+        <a href="https://www.linkedin.com/in/felipe-snitynski-camillo-07b09a1b1/" target="_blank" rel="noopener">
+          /in/felipe-snitynski-camillo-07b09a1b1
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Felipe Snitynski Camillo</p>
+  </footer>
+</body>
+</html>
