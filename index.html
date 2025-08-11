@@ -1,82 +1,166 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Felipe</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
-        }
-        h2 {
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 5px;
-        }
-        .projeto {
-            background-color: white;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #333;
-            color: white;
-            margin-top: 20px;
-        }
-        a {
-            color: #0077cc;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio - Felipe Snitynski Camillo</title>
+  <meta name="description" content="Portfólio de Felipe Snitynski Camillo — projetos em dados, IA e automação." />
+
+  <style>
+    /* ---------- Design tokens ---------- */
+    :root{
+      --bg: #f5f5f5;
+      --text: #222222;           /* alto contraste no fundo claro */
+      --muted: #555555;
+      --card: #ffffff;
+      --border: #cfcfcf;
+
+      /* Links AA no fundo claro (#f5f5f5 / #fff) */
+      --link: #0645ad;          /* ≈ Wikipedia blue (AA) */
+      --link-hover: #07215f;
+      --link-visited: #3b0083;  /* AA em bg claro */
+
+      /* Foco acessível */
+      --focus: #1a73e8;
+
+      /* Footer (bg escuro) */
+      --footer-bg: #333333;
+      --footer-fg: #ffffff;
+      --footer-link: #e3f2ff;   /* AA sobre #333 */
+      --footer-link-hover: #cfe3ff;
+    }
+
+    /* ---------- Reset mínimo ---------- */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ---------- Acessibilidade global ---------- */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: 8px;
+      background: #fff;
+      padding: 8px 12px;
+      border: 2px solid var(--focus);
+      border-radius: 6px;
+      z-index: 1000;
+    }
+    .skip-link:focus{ left: 8px; }
+
+    :focus-visible{
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      * { animation: none !important; transition: none !important; }
+    }
+
+    /* ---------- Layout ---------- */
+    header{
+      background: #333;
+      color: #fff;
+      padding: 24px 16px;
+      text-align: center;
+    }
+    header p{ margin: 6px 0 0; color: #ddd; }
+
+    nav ul{
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    main{ padding: 20px 16px 40px; }
+    section{
+      max-width: 900px;
+      margin: 0 auto 24px;
+      padding: 0 4px;
+    }
+    h2{
+      margin-top: 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .projeto{
+      background: var(--card);
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .projeto p{ margin: 6px 0 12px; color: var(--muted); }
+
+    footer{
+      background: var(--footer-bg);
+      color: var(--footer-fg);
+      text-align: center;
+      padding: 14px 10px;
+    }
+
+    /* ---------- Links ---------- */
+    a{
+      color: var(--link);
+      text-decoration: underline;  /* não depende só de cor */
+    }
+    a:hover, a:focus-visible{
+      color: var(--link-hover);
+      background: #e6f0ff;
+    }
+    a:visited{ color: var(--link-visited); }
+
+    footer a{
+      color: var(--footer-link);
+      text-decoration: underline;
+    }
+    footer a:hover, footer a:focus-visible{
+      color: var(--footer-link-hover);
+      background: transparent;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Felipe Snitynski Camillo</h1>
-        <p>Estudante & Desenvolvedor</p>
-    </header>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
 
-    <section>
-        <h2>Sobre Mim</h2>
-        <p>Sou estudante de Sistemas de Informação na UTFPR e desenvolvedor com interesse em dados, inteligência artificial e automação.</p>
+  <header>
+    <h1>Felipe Snitynski Camillo</h1>
+    <p>Estudante & Desenvolvedor</p>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section id="sobre" aria-labelledby="titulo-sobre">
+      <h2 id="titulo-sobre">Sobre Mim</h2>
+      <p>Sou estudante de Sistemas de Informação na UTFPR e desenvolvedor com interesse em dados, inteligência artificial e automação.</p>
     </section>
 
-    <section>
-        <h2>Projetos</h2>
-        <div class="projeto">
-            <h3>Mapa de Rotas de Transporte</h3>
-            <p>Visualização interativa de rotas de transporte público usando Folium e Pandas.</p>
-            <a href="https://github.com/seuusuario/repositorio" target="_blank">Ver no GitHub</a>
-        </div>
-        <div class="projeto">
-            <h3>Reconstrução de Imagens com CGNE/CGNR</h3>
-            <p>Algoritmos para reconstrução de imagens a partir de sinais aplicando métodos iterativos.</p>
-            <a href="https://github.com/seuusuario/repositorio" target="_blank">Ver no GitHub</a>
-        </div>
-    </section>
+    <section id="projetos" aria-labelledby="titulo-projetos">
+      <h2 id="titulo-projetos">Projetos</h2>
 
-    <section>
-        <h2>Contato</h2>
-        <p>Email: <a href="mailto:felipescamillo2018@gmail.com">felipe@email.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/felipe-snitynski-camillo-07b09a1b1/" target="_blank">linkedin.com/in/seulinkedin</a></p>
-    </section>
+      <article class="projeto" aria-labelledby="p1">
+        <h3 id="p1">Mapa de Rotas de Transporte</h3>
+        <p>Visualização interativa de rotas de transporte público usando Folium e Pandas.</p>
+        <a href="https://github.com/seuusuario/repositorio"
+           target="_blank" rel="noopener">Ver no GitHub</a>
+      </article>
 
-    <footer>
-        <p>© 2025 Felipe Snitynski Camillo</p>
-    </footer>
-</body>
-</html>
+      <article class="projeto"
