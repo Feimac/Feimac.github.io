@@ -1,213 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfólio - Felipe Snitynski Camillo</title>
-  <meta name="description" content="Portfólio de Felipe Snitynski Camillo — projetos em dados, IA e automação." />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portfólio - Felipe Snitynski Camillo</title>
+    <meta name="description" content="Portfólio de Felipe Snitynski Camillo — projetos em dados, IA e automação." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
-  <style>
-    /* ---------- Design tokens ---------- */
-    :root{
-      --bg: #f5f5f5;
-      --text: #222222;
-      --muted: #555555;
-      --card: #ffffff;
-      --border: #cfcfcf;
-
-      /* Links AA */
-      --link: #0645ad;
-      --link-hover: #07215f;
-      --link-visited: #3b0083;
-
-      /* Foco acessível */
-      --focus: #1a73e8;
-
-      /* Footer */
-      --footer-bg: #333333;
-      --footer-fg: #ffffff;
-      --footer-link: #e3f2ff;
-      --footer-link-hover: #cfe3ff;
-    }
-
-    /* ---------- Reset mínimo ---------- */
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
-    }
-
-    /* ---------- Acessibilidade global ---------- */
-    .skip-link{
-      position: absolute;
-      left: -999px;
-      top: 8px;
-      background: #fff;
-      padding: 8px 12px;
-      border: 2px solid var(--focus);
-      border-radius: 6px;
-      z-index: 1000;
-    }
-    .skip-link:focus{ left: 8px; }
-
-    :focus-visible{
-      outline: 3px solid var(--focus);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      * { animation: none !important; transition: none !important; }
-    }
-
-    /* ---------- Layout ---------- */
-    header{
-      background: #333;
-      color: #fff;
-      padding: 24px 16px;
-      text-align: center;
-    }
-    header p{ margin: 6px 0 0; color: #ddd; }
-
-    nav ul{
-      list-style: none;
-      display: flex;
-      gap: 12px;         /* espaço entre os botões */
-      justify-content: center;
-      padding: 0;
-      margin: 12px 0 0;
-      flex-wrap: wrap;   /* quebra linha no mobile */
-    }
-
-    main{ padding: 20px 16px 40px; }
-    section{
-      max-width: 900px;
-      margin: 0 auto 24px;
-      padding: 0 4px;
-    }
-    h2{
-      margin-top: 0;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--border);
-    }
-
-    .projeto{
-      background: var(--card);
-      padding: 16px;
-      margin: 12px 0;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-    .projeto p{ margin: 6px 0 12px; color: var(--muted); }
-
-    footer{
-      background: var(--footer-bg);
-      color: var(--footer-fg);
-      text-align: center;
-      padding: 14px 10px;
-    }
-
-    /* ---------- Links globais ---------- */
-    a{
-      color: var(--link);
-      text-decoration: underline;
-    }
-    a:hover, a:focus-visible{
-      color: var(--link-hover);
-      background: #e6f0ff;
-    }
-    a:visited{ color: var(--link-visited); }
-
-    footer a{
-      color: var(--footer-link);
-      text-decoration: underline;
-    }
-    footer a:hover, footer a:focus-visible{
-      color: var(--footer-link-hover);
-      background: transparent;
-    }
-
-    /* ---------- Menu como botões ---------- */
-    nav ul li a{
-      display: inline-block;
-      padding: 8px 14px;
-      background-color: #0645ad; /* alto contraste */
-      color: #ffffff;
-      border-radius: 6px;
-      text-decoration: none;      /* sem sublinhado nos botões */
-      font-weight: 600;
-      transition: background-color 0.2s ease, transform 0.15s ease;
-    }
-    nav ul li a:hover,
-    nav ul li a:focus-visible{
-      background-color: #07215f;
-      transform: translateY(-2px);
-    }
-    nav ul li a:active{
-      transform: translateY(0);
-    }
-
-    /* ---------- Ajustes responsivos ---------- */
-    @media (max-width: 480px){
-      nav ul li a{ padding: 10px 16px; }
-    }
-  </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Pular para o conteúdo principal</a>
+    <div id="particles-js"></div>
 
-  <header>
-    <h1>Felipe Snitynski Camillo</h1>
-    <p>Estudante & Desenvolvedor</p>
-    <nav aria-label="Navegação principal">
-      <ul>
-        <li><a href="#sobre">Sobre</a></li>
-        <li><a href="#projetos">Projetos</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main id="conteudo">
-    <section id="sobre" aria-labelledby="titulo-sobre">
-      <h2 id="titulo-sobre">Sobre Mim</h2>
-      <p>Sou estudante de Sistemas de Informação na UTFPR e desenvolvedor com interesse em dados, inteligência artificial e automação.</p>
-    </section>
+    <main id="conteudo">
+        <section id="sobre" aria-labelledby="titulo-sobre">
+            <h2 id="titulo-sobre">Sobre Mim</h2>
+            <p>Olá, atualmente sou estudante do curso de Bacharelado em Sistemas de Informação, estou no 7º período de 9. Minha jornada na programação começou durante o final do ensino médio quando tive contato com alguns cursos de lógica de programação. Após o ensino médio, fui aprovado na Universidade Tecnológica Federal do Paraná, onde tive a oportunidade de desenvolver habilidades de programação e sociais </p>
+        </section>
 
-    <section id="projetos" aria-labelledby="titulo-projetos">
-      <h2 id="titulo-projetos">Projetos</h2>
+        <section id="projetos" aria-labelledby="titulo-projetos">
+            <h2 id="titulo-projetos">Projetos</h2>
+            
+            <article class="projeto" aria-labelledby="p1">
+                <h3>Implementação de um sistema RAG para pós-graduação da UTFPR</h3>
+                <p>Durante meu estágio na UTFPR tive a oportunidade de trabalhar com os programas de Pós-Gradução auxiliando na em processos de coleta de dados e organização de informações dentro dos programas. Nesse período pude notar a dificuldade em que os discente e docentes têm na hora de procurar algum regulamento dentre diversos documentos, por exemplo, um dos programas tem quinze documentos entre regulamentos do próprio programa e regulamentos externos. A partir desse problema, busquei desenvolver um sistema baseado em LLM restrito a documentos do setor para responder dúvidas do corpo acadêmico, visando simplificar o processo de busca de informação dentro dos programas. </p>
+                <a href="https://github.com/Feimac/RagSystemPPGTE" target="_blank" rel="noopener">Ver no GitHub</a>
+            </article>
+            
+            <article class="projeto" aria-labelledby="p2">
+                <h3>Estudo de caso: Extração de informações utilizando técnicas de Processamento de Linguagem Natural</h3>
+                <p>Durante a implementação do sistema RAG para os programas de pós, surgiu uma grande dificuldade que me instigou iniciar um projeto de Iniciação Científica na área de processamento de linguagem natural, o problema foi extrair informações de documentos. Como extrair informações de centenas de arquivos com formatos diferentes? A proposta da IC foi buscar formas de extrair informações sobre licitações públicas e estruturar em um banco de dados para futuras análises. Como resultado, foi possível extrair e estruturar informações dentro de uma banco de dados baseado em Grafos no modelo Objeto-Informação-Pessoa.</p>
+                <a href="https://github.com/Feimac/Analise-da-Varia-o-altimetrica-transporte-coletivo" target="_blank" rel="noopener">Ver no GitHub</a>
+            </article>
 
-      <article class="projeto" aria-labelledby="p1">
-        <h3 id="p1">Mapa de Rotas de Transporte</h3>
-        <p>Visualização interativa de rotas de transporte público usando Folium e Pandas.</p>
-        <a href="https://github.com/seuusuario/repositorio" target="_blank" rel="noopener">Ver no GitHub</a>
-      </article>
+            <article class="projeto" aria-labelledby="p3">
+                <h3>Aplicação de Inteligência Computacional no contexto de Smart Cities</h3>
+                <p>Esse projeto surgiu do meu interesse na área do urbanismo, buscando integrar urbanismo e sistemas de informação, tive a oportunidade de aplicar algoritmos de machine learning para a análise de padrões no transporte urbano de Curitiba, visando localizar gargalos e lacunas no transporte urbano da cidade. Como resultados, foi possível mapear áreas com mais atrasos na cidade, juntamente com a aplicação de regressão polinomial para "prever" atrasos com base na relação localização e atraso.</p>
+                <a href="https://github.com/Feimac/Analise-da-Varia-o-altimetrica-transporte-coletivo" target="_blank" rel="noopener">Ver no GitHub</a>
+            </article>
+            <article class="projeto" aria-labelledby="p4">
+                <h3>Participação no grupo de corrida Corre UTF</h3>
+                <p>Há dois comecei a praticar atividades ao lar livre, mais especificamente corrida de rua, nesse período comecei a participar do grupo de corrida da UTFPR, onde além de corrermos em equipes, participamos também de projetos sociais, como realizar corridas com pessoas com pessoas com deficiencias visual ou motoras.</p>
+                <a href="https://github.com/Feimac/Analise-da-Varia-o-altimetrica-transporte-coletivo" target="_blank" rel="noopener">Ver no GitHub</a>
+            </article>
+        </section>
 
-      <article class="projeto" aria-labelledby="p2">
-        <h3 id="p2">Reconstrução de Imagens com CGNE/CGNR</h3>
-        <p>Algoritmos para reconstrução de imagens a partir de sinais aplicando métodos iterativos.</p>
-        <a href="https://github.com/seuusuario/repositorio" target="_blank" rel="noopener">Ver no GitHub</a>
-      </article>
-    </section>
+        <section id="contato" aria-labelledby="titulo-contato">
+                    <h2 id="titulo-contato">Contato</h2>
+                    
+                    <ul class="lista-contato">
+                        <li>
+                            <i class="fa-brands fa-github"></i>
+                            <a href="https://github.com/Feimac" target="_blank" rel="noopener">/Feimac</a>
+                        </li>
+                        <li>
+                            <i class="fa-brands fa-linkedin"></i>
+                            <a href="https://www.linkedin.com/in/felipe-snitynski-camillo-07b09a1b1/" target="_blank" rel="noopener">/felipe-snitynski-camillo</a>
+                        </li>
+                        <li>
+                            <i class="fa-solid fa-envelope"></i>
+                            <a href="mailto:felipescamillo2018@gmail.com">felipescamillo2018@gmail.com</a>
+                        </li>
+                    </ul>
 
-    <section id="contato" aria-labelledby="titulo-contato">
-      <h2 id="titulo-contato">Contato</h2>
-      <p>Email: <a href="mailto:felipescamillo2018@gmail.com">felipescamillo2018@gmail.com</a></p>
-      <p>LinkedIn:
-        <a href="https://www.linkedin.com/in/felipe-snitynski-camillo-07b09a1b1/" target="_blank" rel="noopener">
-          /in/felipe-snitynski-camillo-07b09a1b1
-        </a>
-      </p>
-    </section>
-  </main>
+                </section>
+    </main>
 
-  <footer>
-    <p>© 2025 Felipe Snitynski Camillo</p>
-  </footer>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
 </body>
 </html>
