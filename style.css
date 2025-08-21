@@ -16,14 +16,14 @@ html {
 /* ---------- Design tokens (TEMA CLARO) ---------- */
 :root {
     --bg: #f5f5f5;
-    --text: #1a1a1a;          /* contraste mais forte */
-    --muted: #333333;         /* texto auxiliar mais escuro */
+    --text: #1a1a1a;          
+    --muted: #333333;         
     --card: #ffffff;
     --border: #b0b0b0;
-    --link: #0645ad;          /* azul padrão WCAG AA */
+    --link: #0645ad;          
     --link-hover: #032a66;
-    --link-visited: #4b0082;  /* roxo forte */
-    --focus: #ff9800;         /* cor laranja bem visível */
+    --link-visited: #4b0082;  
+    --focus: #ff9800;         
 }
 
 /* ---------- Reset e Corpo da Página ---------- */
@@ -34,7 +34,7 @@ html {
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 100%;     /* equivalente a 16px, mas relativo */
     line-height: 1.6;
     color: var(--text);
     background-color: transparent;
@@ -64,7 +64,7 @@ nav ul {
 
 nav a {
     color: var(--muted);
-    text-decoration: underline; /* sempre sublinhado */
+    text-decoration: underline;
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 6px;
@@ -105,7 +105,7 @@ section {
 }
 
 .texto-digitado {
-    font-size: 2.5em;
+    font-size: 2.5em; /* já relativo */
     font-weight: bold;
     color: var(--text);
     display: inline-block;
@@ -209,10 +209,10 @@ a:visited {
 .form-grupo input,
 .form-grupo textarea {
     width: 100%;
-    padding: 12px;
+    padding: 0.75em; /* relativo */
     border: 1px solid var(--border);
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1em; /* relativo ao body */
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
     color: var(--text);
@@ -222,25 +222,25 @@ a:visited {
 .form-grupo textarea:focus {
     outline: none;
     border-color: var(--focus);
-    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.5); /* foco laranja */
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.5);
 }
 
 .btn-enviar {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 0.75em 1.5em;
     border: none;
     border-radius: 6px;
-    background-color: var(--link);
+    background-color: #003366; /* contraste reforçado */
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1em; /* relativo */
     cursor: pointer;
     transition: background-color 0.3s, outline 0.2s;
 }
 
 .btn-enviar:hover,
 .btn-enviar:focus-visible {
-    background-color: var(--link-hover);
+    background-color: #001a33;
     outline: 3px solid var(--focus);
     outline-offset: 2px;
 }
@@ -296,6 +296,7 @@ a:visited {
         color: var(--text);
     }
 }
+
 .skip-link {
     position: absolute;
     top: -40px;
