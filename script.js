@@ -69,11 +69,17 @@ const node = svg.append("g")
     .selectAll("circle")
     .data(contatos.nodes)
     .enter().append("circle")
-    .attr("r", 20)
+    .attr("r", 30)
     .attr("fill", d => d.group === 1 ? "#1a73e8" : "#ff9800")
     .style("cursor", "pointer")
+    .attr("tabindex", 0) // permite foco via teclado
     .on("click", (event, d) => {
         if (d.url) window.open(d.url, "_blank");
+    })
+    .on("keypress", (event, d) => {
+        if ((event.key === "Enter" || event.key === " ") && d.url) {
+            window.open(d.url, "_blank");
+        }
     })
     .call(d3.drag()
         .on("start", dragstarted)
@@ -85,8 +91,8 @@ const label = svg.append("g")
     .data(contatos.nodes)
     .enter().append("text")
     .text(d => d.id)
-    .attr("font-size", 12)
-    .attr("dy", -30)
+    .attr("font-size", 24)
+    .attr("dy", -40)
     .attr("text-anchor", "middle");
 
 simulation.on("tick", () => {

@@ -16,14 +16,14 @@ html {
 /* ---------- Design tokens (TEMA CLARO) ---------- */
 :root {
     --bg: #f5f5f5;
-    --text: #222222;
-    --muted: #555555;
+    --text: #1a1a1a;          /* contraste mais forte */
+    --muted: #333333;         /* texto auxiliar mais escuro */
     --card: #ffffff;
-    --border: #cfcfcf;
-    --link: #0645ad;
-    --link-hover: #07215f;
-    --link-visited: #3b0083;
-    --focus: #1a73e8;
+    --border: #b0b0b0;
+    --link: #0645ad;          /* azul padrão WCAG AA */
+    --link-hover: #032a66;
+    --link-visited: #4b0082;  /* roxo forte */
+    --focus: #ff9800;         /* cor laranja bem visível */
 }
 
 /* ---------- Reset e Corpo da Página ---------- */
@@ -47,9 +47,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(5px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     z-index: 100;
     text-align: center;
 }
@@ -64,15 +64,17 @@ nav ul {
 
 nav a {
     color: var(--muted);
-    text-decoration: none;
+    text-decoration: underline; /* sempre sublinhado */
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 6px;
     transition: background-color 0.3s, color 0.3s;
 }
 
-nav a:hover {
-    background-color: #e9e9e9;
+nav a:hover,
+nav a:focus-visible {
+    background-color: #e0e0e0;
+    color: var(--link);
 }
 
 nav a.active-link {
@@ -94,7 +96,7 @@ section {
     box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
-/* ---------- ANIMAÇÃO DE DIGITAÇÃO NA INTRODUÇÃO ---------- */
+/* ---------- ANIMAÇÃO DE DIGITAÇÃO ---------- */
 .intro-animada {
     text-align: center;
     padding: 60px 20px;
@@ -126,7 +128,7 @@ section {
     50% { border-color: var(--text); }
 }
 
-/* ---------- ESTILOS PARA IMAGENS ADICIONADOS ---------- */
+/* ---------- IMAGENS ---------- */
 .sobre-container {
     display: flex;
     align-items: flex-start;
@@ -142,12 +144,13 @@ section {
 }
 
 .img-projeto {
-    width: 100%; /* A imagem ocupará 100% da largura do contêiner pai */
+    width: 100%;
     height: auto;
     border-radius: 6px;
     margin-bottom: 15px;
 }
 
+/* ---------- TITULOS ---------- */
 h2 {
     margin-top: 0;
     padding-bottom: 8px;
@@ -155,7 +158,7 @@ h2 {
 }
 
 h3 {
-    color: #333;
+    color: #222;
 }
 
 .projeto {
@@ -175,7 +178,7 @@ h3 {
     color: var(--muted);
 }
 
-/* ---------- Links Gerais ---------- */
+/* ---------- LINKS ---------- */
 a {
     color: var(--link);
     text-decoration: underline;
@@ -183,29 +186,15 @@ a {
 
 a:hover, a:focus-visible {
     color: var(--link-hover);
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
 }
 
 a:visited {
     color: var(--link-visited);
 }
 
-/* ---------- Media Queries para Responsividade ---------- */
-@media (max-width: 600px) {
-    .texto-digitado {
-        font-size: 1.8em;
-    }
-
-    .sobre-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .foto-perfil {
-        margin-bottom: 15px;
-    }
-}
-/* ---------- ESTILOS DO FORMULÁRIO DE CONTATO ---------- */
+/* ---------- FORMULÁRIO ---------- */
 .form-grupo {
     margin-bottom: 20px;
 }
@@ -233,7 +222,7 @@ a:visited {
 .form-grupo textarea:focus {
     outline: none;
     border-color: var(--focus);
-    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+    box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.5); /* foco laranja */
 }
 
 .btn-enviar {
@@ -246,14 +235,17 @@ a:visited {
     font-weight: bold;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, outline 0.2s;
 }
 
-.btn-enviar:hover, .btn-enviar:focus {
+.btn-enviar:hover,
+.btn-enviar:focus-visible {
     background-color: var(--link-hover);
+    outline: 3px solid var(--focus);
+    outline-offset: 2px;
 }
 
-/* Adiciona um espaçamento acima da lista de contatos */
+/* ---------- CONTATOS ---------- */
 .lista-contato {
     margin-top: 40px;
     padding: 0;
@@ -262,10 +254,59 @@ a:visited {
     justify-content: center;
     gap: 20px;
 }
+
 #grafico-contatos {
     width: 100%;
     height: 400px;
     margin-top: 20px;
     border: 1px solid var(--border);
     border-radius: 8px;
+}
+
+/* ---------- RESPONSIVIDADE ---------- */
+@media (max-width: 600px) {
+    .texto-digitado {
+        font-size: 1.8em;
+    }
+
+    .sobre-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .foto-perfil {
+        margin-bottom: 15px;
+    }
+}
+
+/* ---------- ALTO CONTRASTE (ACESSIBILIDADE EXTRA) ---------- */
+@media (prefers-contrast: more) {
+    :root {
+        --bg: #000;
+        --text: #fff;
+        --card: #111;
+        --border: #fff;
+        --link: #00ffff;
+        --link-hover: #ff0;
+        --focus: #ff0;
+    }
+    body {
+        background-color: var(--bg);
+        color: var(--text);
+    }
+}
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 10px;
+    background: #000;
+    color: #fff;
+    padding: 8px 16px;
+    z-index: 200;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.skip-link:focus {
+    top: 10px;
 }

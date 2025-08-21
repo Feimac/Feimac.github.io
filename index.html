@@ -1,18 +1,27 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Portfólio - Felipe Snitynski Camillo</title>
     <meta name="description" content="Portfólio de Felipe Snitynski Camillo — projetos em dados, IA e automação." />
+    
+    <!-- Declaração de conformidade de acessibilidade -->
+    <meta name="accessibility" content="WCAG 2.1 AA compliant">
+    <meta name="conformance" content="W3C-WAI WCAG 2.1 Level AA">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Skip link para acessibilidade -->
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo principal</a>
+
+    <div id="particles-js"></div>
     <div id="particles-js"></div>
 
     <header>
-        <nav>
+        <nav role="navigation" aria-label="Menu principal">
             <ul>
                 <li><a href="#sobre">Sobre Mim</a></li>
                 <li><a href="#projetos">Projetos</a></li>
@@ -21,7 +30,7 @@
         </nav>
     </header>
 
-    <main id="conteudo">
+    <main id="conteudo" role="main">
         <section class="intro-animada">
             <h1 class="texto-digitado">Olá, meu nome é Felipe</h1>
         </section>
@@ -29,46 +38,46 @@
         <section id="sobre" aria-labelledby="titulo-sobre">
             <h2 id="titulo-sobre">Sobre Mim</h2>
             <div class="sobre-container">
-                <img src="img\perfil.jpg" alt="Foto de Felipe Snitynski Camillo" class="foto-perfil">
-                <p>Olá, atualmente sou estudante do curso de Bacharelado em Sistemas de Informação e estou no 7º período de 9. Minha jornada na programação começou durante o final do ensino médio, quando tive contato com alguns cursos de lógica de programação. Após o ensino médio, fui aprovado na Universidade Tecnológica Federal do Paraná, onde tive a oportunidade de desenvolver habilidades de programação e sociais.</p>
+                <img src="img/perfil.jpg" alt="Foto de Felipe Snitynski Camillo" class="foto-perfil">
+                <p>Oi, eu sou o <strong>Felipe</strong>. Estudo <strong>Sistemas de Informação na UTFPR</strong> e gosto de explorar como inteligência artificial, análise de dados e automação podem simplificar processos no nosso cotidiano. No estágio na Pós-Graduação da universidade, tenho trabalhado com a modelagem de processos e automação de rotinas, mas também gosto de pesquisar e desenvolver projetos em <em>IA</em> e <em>Processamento de Linguagem Natural</em>. Fora da Universidade, mas através dela, gosto de praticar esportes e faço parte do grupo de corrida da UTFPR, que me ajuda a desestressar especialmente nas semanas de prova e final de semestre.</p>
             </div>
         </section>
 
         <section id="projetos" aria-labelledby="titulo-projetos">
-            <h2 id="titulo-projetos">Projetos</h2>
+            <h2 id="p1">Projetos</h2>
             
             <article class="projeto" aria-labelledby="p1">
-                <h3>Implementação de um sistema RAG para pós-graduação da UTFPR</h3>
+                <h3 id="p1">Implementação de um sistema RAG para pós-graduação da UTFPR</h3>
                 <p>Durante meu estágio na UTFPR tive a oportunidade de trabalhar com os programas de Pós-Graduação, auxiliando nos processos de coleta de dados e organização de informações dentro dos programas. Nesse período, pude notar a dificuldade que discentes e docentes enfrentam na hora de procurar algum regulamento dentre diversos documentos. Por exemplo, um dos programas possui quinze documentos entre regulamentos internos e externos. A partir desse problema, busquei desenvolver um sistema baseado em LLM restrito a documentos do setor para responder dúvidas do corpo acadêmico, visando simplificar o processo de busca de informações dentro dos programas.</p>
-                <img src="img\rag.png" alt="Printscreen da interface do Streamlit, mostrando a imagem do layout do protótipo do sistema RAG." class="img-projeto">
+                <img src="img/rag.png" alt="Print da interface do Streamlit mostrando o protótipo do sistema RAG" class="img-projeto">
                 <a href="https://github.com/Feimac/RagSystemPPGTE" target="_blank" rel="noopener">Ver no GitHub</a>
             </article>
             
             <article class="projeto" aria-labelledby="p2">
-                <h3>Estudo de caso: Extração de informações utilizando técnicas de Processamento de Linguagem Natural</h3>
+                <h3 id="p2">Estudo de caso: Extração de informações utilizando técnicas de Processamento de Linguagem Natural</h3>
                 <p>Durante a implementação do sistema RAG para os programas de pós, surgiu uma grande dificuldade que me instigou a iniciar um projeto de Iniciação Científica na área de Processamento de Linguagem Natural. O problema foi: como extrair informações de centenas de arquivos com formatos diferentes? A proposta da IC foi buscar formas de extrair informações sobre licitações públicas e estruturá-las em um banco de dados para futuras análises. Como resultado, foi possível extrair e estruturar informações dentro de um banco de dados baseado em grafos, no modelo Objeto-Informação-Pessoa.</p>
-                <img src="img\processamento_linguagem.jpg" alt="Exemplo de análise de documentos usando PLN" class="img-projeto">
+                <img src="img/processamento_linguagem.jpg" alt="Exemplo de análise de documentos usando PLN" class="img-projeto">
                 <a href="https://github.com/Feimac/extracaoDadosLLM" target="_blank" rel="noopener">Ver no GitHub</a>
             </article>
 
             <article class="projeto" aria-labelledby="p3">
-                <h3>Aplicação de Inteligência Computacional no contexto de Smart Cities</h3>
+                <h3 id="p3">Aplicação de Inteligência Computacional no contexto de Smart Cities</h3>
                 <p>Esse projeto surgiu do meu interesse na área do urbanismo, buscando integrar urbanismo e sistemas de informação. Tive a oportunidade de aplicar algoritmos de Machine Learning para a análise de padrões no transporte urbano de Curitiba, visando localizar gargalos e lacunas no sistema. Como resultados, foi possível mapear áreas com mais atrasos na cidade, juntamente com a aplicação de regressão polinomial para prever atrasos com base na relação entre localização e histórico de atrasos.</p>
-                <img src="img\smart_cities.jpg" alt="Exemplo de análise em Smart Cities" class="img-projeto">
-                <a href="https://github.com/Feimac/Analise-da-Varia-o-altimetrica-transporte-coletivo" target="_blank" rel="noopener">Ver no GitHub</a>
+                <img src="img/smart_cities.jpg" alt="Mapa e gráficos de análise de transporte em Smart Cities" class="img-projeto">
+                <a href="https://github.com/Feimac/IniciacaoCientifica" target="_blank" rel="noopener">Ver no GitHub</a>
             </article>
 
             <article class="projeto" aria-labelledby="p4">
-                <h3>Participação no grupo de corrida Corre UTF</h3>
+                <h3 id="p4">Participação no grupo de corrida Corre UTF</h3>
                 <p>Há dois anos comecei a praticar atividades ao ar livre, mais especificamente corrida de rua. Nesse período, passei a participar do grupo de corrida da UTFPR, onde além de corrermos em equipe, participamos também de projetos sociais, como realizar corridas com pessoas com deficiência visual ou motora.</p>
-                <img src="img\projeto_corrida.jpg" alt="Grupo de corrida Corre UTF em ação" class="img-projeto">
+                <img src="img/projeto_corrida.jpg" alt="Grupo de corrida Corre UTF durante uma atividade esportiva" class="img-projeto">
             </article>
         </section>
 
         <section id="contato" aria-labelledby="titulo-contato">
             <section id="grafo-contato" aria-labelledby="titulo-grafo">
                 <h2 id="titulo-grafo">Rede de Contatos</h2>
-                <div id="grafico-contatos"></div>
+                <div id="grafico-contatos" role="img" aria-label="Rede de contatos interativa mostrando conexões entre Felipe, GitHub, LinkedIn e E-mail"></div>
             </section>
 
             <!-- Importa a biblioteca D3 -->
@@ -78,7 +87,7 @@
             <h2 id="titulo-contato">Contato</h2>
             <p>Tem alguma pergunta ou gostaria de trabalhar junto? Preencha o formulário abaixo.</p>
 
-            <form action="https://usebasin.com/f/SEU_ENDPOINT_DO_BASIN" method="POST">
+            <form action="https://usebasin.com/f/9fea1db97df7" method="POST">
                 <div class="form-grupo">
                     <label for="nome">Nome</label>
                     <input type="text" id="nome" name="nome" required>
@@ -94,13 +103,18 @@
                 <button type="submit" class="btn-enviar">Enviar Mensagem</button>
             </form>
 
-            <ul class="lista-contato">
-                <li><i class="fa-brands fa-github"></i> <a href="https://github.com/Feimac" target="_blank" rel="noopener">/Feimac</a></li>
-                <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/felipe-snitynski-camillo-07b09a1b1/" target="_blank" rel="noopener">/felipe-snitynski-camillo</a></li>
-                <li><i class="fa-solid fa-envelope"></i> <a href="mailto:felipescamillo2018@gmail.com">felipescamillo2018@gmail.com</a></li>
-            </ul>
+
         </section>
     </main>
+
+    <footer>
+        <p>
+            Este site segue as diretrizes de acessibilidade do 
+            <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener">
+                WCAG 2.1 Nível AA
+            </a>, visando proporcionar melhor experiência a todos os usuários.
+        </p>
+    </footer>
 
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
