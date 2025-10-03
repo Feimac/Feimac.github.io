@@ -13,10 +13,14 @@ window.addEventListener('DOMContentLoaded', () => {
             const sectionTop = current.offsetTop - 80;
             const sectionId = current.getAttribute('id');
 
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector(`nav a[href*=${sectionId}]`).classList.add('active-link');
-            } else {
-                document.querySelector(`nav a[href*=${sectionId}]`).classList.remove('active-link');
+            // Verifica se o link de navegação correspondente existe antes de tentar acessá-lo
+            const navLink = document.querySelector(`nav a[href*=${sectionId}]`);
+            if (navLink) {
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    navLink.classList.add('active-link');
+                } else {
+                    navLink.classList.remove('active-link');
+                }
             }
         });
     };
@@ -64,7 +68,8 @@ function createGraph() {
 
     const svg = d3.select("#grafico-contatos").append("svg")
         .attr("width", width)
-        .attr("height", height);
+        .attr("height", height)
+        .attr("viewBox", [0, 0, width, height]);
 
     const simulation = d3.forceSimulation(contatos.nodes)
         .force("link", d3.forceLink(contatos.links).id(d => d.id).distance(150))
@@ -76,15 +81,14 @@ function createGraph() {
         .attr("stroke-opacity", 0.6)
         .selectAll("line")
         .data(contatos.links)
-        .enter().append("line")
+        .join("line")
         .attr("stroke-width", 2);
 
-    const node = svg.append("g")
-        .selectAll("circle")
+    // --- MELHORIA: Grupo <g> para nó + texto ---
+    const nodeGroup = svg.append("g")
+        .selectAll("g")
         .data(contatos.nodes)
-        .enter().append("circle")
-        .attr("r", 25)
-        .attr("fill", d => d.group === 1 ? "#1a73e8" : "#ff9800")
+        .join("g")
         .style("cursor", "pointer")
         .attr("tabindex", 0)
         .on("click", (event, d) => {
@@ -96,18 +100,21 @@ function createGraph() {
             }
         })
         .call(d3.drag()
-            .on("start", dragstarted)
+            .on("start", (event, d) => dragstarted(event, d, simulation))
             .on("drag", dragged)
-            .on("end", dragended));
+            .on("end", (event, d) => dragended(event, d, simulation))
+        );
 
-    const label = svg.append("g")
-        .selectAll("text")
-        .data(contatos.nodes)
-        .enter().append("text")
+    nodeGroup.append("circle")
+        .attr("r", 25)
+        .attr("fill", d => d.group === 1 ? "#1a73e8" : "#ff9800");
+
+    nodeGroup.append("text")
         .text(d => d.id)
         .attr("font-size", 18)
         .attr("dy", -35)
-        .attr("text-anchor", "middle");
+        .attr("text-anchor", "middle")
+        .attr("fill", "var(--text)");
 
     simulation.on("tick", () => {
         link
@@ -116,26 +123,25 @@ function createGraph() {
             .attr("x2", d => d.target.x)
             .attr("y2", d => d.target.y);
 
-        node
-            .attr("cx", d => d.x)
-            .attr("cy", d => d.y);
-
-        label
-            .attr("x", d => d.x)
-            .attr("y", d => d.y);
+        // Posiciona o grupo inteiro
+        nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     });
 }
 
-function dragstarted(event, d) {
-    if (!event.active) d3.select(this).attr("stroke", "#000");
+// --- CORREÇÃO: Funções de arrastar que acordam a simulação ---
+function dragstarted(event, d, simulation) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
 }
+
 function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
 }
-function dragended(event, d) {
+
+function dragended(event, d, simulation) {
+    if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
 }

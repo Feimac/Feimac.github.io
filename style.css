@@ -30,7 +30,66 @@ html {
 * {
     box-sizing: border-box;
 }
+/* Estilos para a seção de Experiência Profissional */
+.experiencia-item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 25px; /* Espaço entre o logo e os detalhes */
+    margin-bottom: 40px; /* Espaço entre uma experiência e outra */
+}
 
+.experiencia-logo {
+    flex-shrink: 0; /* Impede que a div do logo encolha */
+}
+
+.logo-empresa {
+    width: 80px; /* Defina um tamanho padrão para os logos */
+    height: auto;
+    border-radius: 8px; /* Bordas arredondadas (opcional) */
+    background-color: #fff; /* Fundo branco caso o logo seja transparente */
+    padding: 5px; /* Pequeno espaçamento interno */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra suave (opcional) */
+}
+
+.experiencia-detalhes {
+    flex-grow: 1; /* Faz a div de detalhes ocupar o espaço restante */
+}
+
+.experiencia-detalhes h3 {
+    margin: 0 0 5px 0;
+    color: #3498db; /* Cor de destaque para o cargo */
+}
+
+.experiencia-detalhes .empresa-nome {
+    font-weight: bold;
+    margin: 0;
+}
+
+.experiencia-detalhes .empresa-nome a {
+    text-decoration: none;
+    color: inherit; /* Herda a cor do texto pai */
+    transition: color 0.3s;
+}
+
+.experiencia-detalhes .empresa-nome a:hover {
+    color: #3498db; /* Muda a cor ao passar o mouse */
+}
+
+.experiencia-detalhes .periodo {
+    color: #777;
+    margin: 5px 0 15px 0;
+    font-style: italic;
+}
+
+.experiencia-detalhes ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.experiencia-detalhes ul li {
+    margin-bottom: 8px;
+}
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
