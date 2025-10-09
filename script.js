@@ -60,7 +60,7 @@ function createGraph() {
     const container = document.getElementById("grafico-contatos");
     if (!container) return;
 
-    // Remove SVG antigo antes de redesenhar
+    // Limpa SVG anterior (para evitar duplicação ao redimensionar)
     d3.select("#grafico-contatos").select("svg").remove();
 
     const width = container.offsetWidth;
@@ -76,6 +76,7 @@ function createGraph() {
         .force("charge", d3.forceManyBody().strength(-400))
         .force("center", d3.forceCenter(width / 2, height / 2));
 
+    // Cria as linhas (links)
     const link = svg.append("g")
         .attr("stroke", "#999")
         .attr("stroke-opacity", 0.6)
@@ -84,20 +85,22 @@ function createGraph() {
         .join("line")
         .attr("stroke-width", 2);
 
-    // --- MELHORIA: Grupo <g> para nó + texto ---
+    // Cria os nós
     const nodeGroup = svg.append("g")
         .selectAll("g")
         .data(contatos.nodes)
         .join("g")
         .style("cursor", "pointer")
-        .attr("tabindex", 0)
-        .on("click", (event, d) => {
-            if (d.url) window.open(d.url, "_blank");
+        .on("click", (event, d) => { if (d.url) window.open(d.url, "_blank"); })
+        .on("mouseover", function() {
+            d3.select(this).select("circle").transition().duration(200).attr("r", 35);
+            d3.select(this).select("foreignObject").transition().duration(200)
+                .attr("width", 40).attr("height", 40).attr("x", -20).attr("y", -20);
         })
-        .on("keypress", (event, d) => {
-            if ((event.key === "Enter" || event.key === " ") && d.url) {
-                window.open(d.url, "_blank");
-            }
+        .on("mouseout", function() {
+            d3.select(this).select("circle").transition().duration(200).attr("r", 30);
+            d3.select(this).select("foreignObject").transition().duration(200)
+                .attr("width", 30).attr("height", 30).attr("x", -15).attr("y", -15);
         })
         .call(d3.drag()
             .on("start", (event, d) => dragstarted(event, d, simulation))
@@ -105,30 +108,47 @@ function createGraph() {
             .on("end", (event, d) => dragended(event, d, simulation))
         );
 
+    // Círculos de fundo dos nós
     nodeGroup.append("circle")
-        .attr("r", 25)
+        .attr("r", 30)
         .attr("fill", d => d.group === 1 ? "#1a73e8" : "#ff9800");
 
+    // Ícones Font Awesome usando foreignObject
+    nodeGroup.append("foreignObject")
+        .attr("x", -15)
+        .attr("y", -15)
+        .attr("width", 30)
+        .attr("height", 30)
+        .html(d => `
+            <i class="${
+                d.id === 'GitHub' ? 'fa-brands fa-github' :
+                d.id === 'LinkedIn' ? 'fa-brands fa-linkedin' :
+                d.id === 'Email' ? 'fa-solid fa-envelope' :
+                'fa-solid fa-user'
+            }" 
+            style="font-size:24px;color:white;display:flex;justify-content:center;align-items:center;width:100%;height:100%;"></i>
+        `);
+
+    // Texto abaixo do nó
     nodeGroup.append("text")
         .text(d => d.id)
-        .attr("font-size", 18)
-        .attr("dy", -35)
+        .attr("font-size", 16)
+        .attr("dy", 50)
         .attr("text-anchor", "middle")
         .attr("fill", "var(--text)");
 
+    // Atualiza posições dinamicamente
     simulation.on("tick", () => {
         link
             .attr("x1", d => d.source.x)
             .attr("y1", d => d.source.y)
             .attr("x2", d => d.target.x)
             .attr("y2", d => d.target.y);
-
-        // Posiciona o grupo inteiro
         nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     });
 }
 
-// --- CORREÇÃO: Funções de arrastar que acordam a simulação ---
+// Funções de arrasto
 function dragstarted(event, d, simulation) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
@@ -145,3 +165,55 @@ function dragended(event, d, simulation) {
     d.fx = null;
     d.fy = null;
 }
+
+// Agora sim vem a função de animação
+function animacaoDeDigitacao() {
+    const elementoTitulo = document.getElementById("titulo-animado");
+    if (!elementoTitulo) return;
+
+    const textoCorreto = "Olá, meu nome é Felipe";
+    const textoErrado = "Olá, meu nome é Felpw";
+    const velocidadeDigitacao = 150;
+    const velocidadeApagar = 100;
+    const tempoPausa = 1000;
+
+    elementoTitulo.classList.add("cursor-piscando");
+
+    function digitar(texto, callback) {
+        let i = 0;
+        const intervalo = setInterval(() => {
+            elementoTitulo.innerHTML += texto.charAt(i);
+            i++;
+            if (i > texto.length - 1) {
+                clearInterval(intervalo);
+                if (callback) setTimeout(callback, tempoPausa);
+            }
+        }, velocidadeDigitacao);
+    }
+
+    function apagar(caracteres, callback) {
+        let i = 0;
+        const intervalo = setInterval(() => {
+            elementoTitulo.innerHTML = elementoTitulo.innerHTML.slice(0, -1);
+            i++;
+            if (i >= caracteres) {
+                clearInterval(intervalo);
+                if (callback) setTimeout(callback, tempoPausa / 2);
+            }
+        }, velocidadeApagar);
+    }
+
+    digitar(textoErrado, () => {
+        apagar(2, () => {
+            digitar("ipe", () => {
+                setTimeout(() => {
+                    elementoTitulo.classList.remove("cursor-piscando");
+                }, tempoPausa * 2);
+            });
+        });
+    });
+}
+
+window.addEventListener('DOMContentLoaded', animacaoDeDigitacao);
+
+ 
