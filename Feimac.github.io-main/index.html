@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -12,6 +11,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://feimac.github.io/" />
+    <!-- Contagem de acessos (GoatCounter) -->
+    <script data-goatcounter="https://feimac.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 
@@ -24,6 +27,9 @@
             </button>
             <ul>
                 <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#artigos-pessoais">Artigos Pessoais</a></li> 
+                <li><a href="#artigos-academicos">Artigos Acadêmicos</a></li> 
+                <li><a href="#videos">Vídeos</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -39,7 +45,26 @@
             <h2 id="titulo-sobre">Sobre Mim</h2>
             <div class="sobre-container">
                 <img src="img/perfil.jpg" alt="Foto de Felipe Snitynski Camillo" class="foto-perfil">
-                <p>Oi, eu sou o <strong>Felipe</strong>. Estudo Sistemas de Informação na <abbr title="Universidade Tecnológica Federal do Paraná">UTFPR</abbr> e gosto de explorar como inteligência artificial, análise de dados e automação podem simplificar processos no nosso cotidiano. No estágio na Pós-Graduação da universidade, tenho trabalhado com a modelagem de processos e automação de rotinas, mas também gosto de pesquisar e desenvolver projetos em <abbr title="Inteligência Artificial">IA</abbr> e <abbr title="Processamento de Linguagem Natural">PLN</abbr>. Fora da Universidade, mas através dela, gosto de praticar esportes e faço parte do grupo de corrida da UTFPR, que me ajuda a desestressar especialmente nas semanas de prova e final de semestre.</p>
+                
+                <div class="sobre-texto">
+                    <p>
+                        Oi, eu sou o <strong>Felipe</strong>. Estudo Sistemas de Informação na 
+                        <abbr title="Universidade Tecnológica Federal do Paraná">UTFPR</abbr> e gosto de explorar como 
+                        inteligência artificial, análise de dados e automação podem simplificar processos no cotidiano.
+                    </p>
+                    
+                    <p>
+                        Minha experiência prática começou com modelagem de processos na Pós-Graduação da universidade. 
+                        Atualmente, atuo na Diretoria de Inovação e Tecnologia da <strong>Intertechne</strong>, integrando a equipe do 
+                        <abbr title="Gestão de Dados, Automação e Inteligência Artificial">GDAI</abbr>. Lá, desenvolvo automações para auxiliar nos processos de gerenciamento da empresa. 
+                    </p>
+
+                    <p>
+                        Fora da universidade, gosto de praticar esportes e faço parte do grupo de corrida da UTFPR. 
+                        A corrida me ajuda a manter o foco e a disciplina, características que levo para os meus projetos, 
+                        especialmente nos momentos mais desafiadores.
+                    </p>
+                </div>
             </div>
         </section>
         
@@ -67,6 +92,29 @@
                         </ul>
                     </div>
                 </article>
+                <article class="experiencia-item">
+                    <div class="experiencia-logo">
+                        <a href="https://www.gov.br/cnpq/pt-br/" target="_blank" rel="noopener noreferrer" aria-label="Visitar site do CNPq">
+                            <img src="img/cnpq.png" alt="Logo do Conselho Nacional de Desenvolvimento Científico e Tecnológico" class="logo-empresa">
+                        </a>
+                    </div>
+                    <div class="experiencia-detalhes">
+                        <h3>Bolsista do CNPq</h3>
+                        <p class="empresa-nome">
+                            <a href="https://www.gov.br/cnpq/pt-br/" target="_blank" rel="noopener noreferrer">
+                                Conselho Nacional de Desenvolvimento Científico e Tecnológico 
+                            </a>
+                        </p>
+                        <p class="periodo">Dezembro 2025 – Atual</p>
+                        <ul>
+                            <li>Este projeto de pesquisa visa o desenvolvimento de uma solução tecnológica para a promoção da segurança viária através da análise comportamental de motoristas. 
+                            Utilizando hardware embarcado (FPGA Xilinx Zynq-7000) e sensores inerciais, o sistema coleta dados em tempo real para alimentar modelos de 
+                            Machine Learning. O objetivo é identificar padrões de risco e modelar um perfil de condução ideal, adaptado a contextos regionais e culturais.
+                            O projeto é realizado em colaboração com diversas instituições, incluindo IFG, UTFPR e Universidade de Coimbra.</li>
+                            
+                        </ul>
+                    </div>
+                </article>
 
                 <article class="experiencia-item">
                     <div class="experiencia-logo">
@@ -91,7 +139,132 @@
 
             </div>
         </section>
+        <!-- Seção de Artigos Pessoais -->
+        <section id="artigos-pessoais" aria-labelledby="titulo-artigos-pessoais">
+            <h2 id="titulo-artigos-pessoais">Artigos Pessoais</h2>
+            
+            <div class="carrosel-container">
+                <div class="carrosel-wrapper">
+                    <button class="btn-scroll btn-left" aria-label="Rolar para a esquerda">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carrosel-track">
+                        <a href="bpm-rh.html" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <h3>BPM e Tecnologia: Desafios e perspectivas da modelagem dos processos de suporte do RH</h3>
+                                <p>Este trabalho apresenta o mapeamento, a remodelagem e a implementação BPMS dos processos de suporte do Serviço de Atendimento ao Colaborador do RH (SACRH) da Intertechne, conduzidos entre julho e outubro de 2026. O projeto seguiu o ciclo de vida BPM (Business Process Management)</p>
+                                <span class="ler-mais">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
 
+                        <a href="https://github.com/Feimac/RoboAutonomo/blob/main/Final%20Report%20.pdf" target="_blank" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <h3>Desenvolvimento de um Robô Autônomo: Relatório Final de Robótica Móvel</h3>
+                                <p>Este relatório documenta o projeto e desenvolvimento de um robô autônomo. O documento aborda a arquitetura do sistema, os desafios técnicos enfrentados e as metodologias aplicadas para a navegação e operação, apresentando os resultados e conclusões obtidas ao longo do estudo.</p>
+                                <span class="ler-mais">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="#" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <h3>Computação, reciclagem de computadores e cooperativismo: Uma proposta de pesquisa fundamentada em Tecnologia Social</h3>
+                                <p>Fundamentado na Tecnologia Social e na Economia Solidária, este projeto propõe mapear, de forma participativa, os processos de recebimento, triagem, classificação, armazenamento e destinação de componentes de computadores em uma cooperativa de Curitiba (PR). Adota-se a pesquisa-ação como abordagem metodológica, articulando observação direta, entrevistas semiestruturadas, análise documental e oficinas de validação.</p>
+                                <span class="ler-mais">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <button class="btn-scroll btn-right" aria-label="Rolar para a direita">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Artigos Acadêmicos -->
+        <section id="artigos-academicos" aria-labelledby="titulo-artigos-academicos">
+            <h2 id="titulo-artigos-academicos">Artigos Acadêmicos</h2>
+            
+            <div class="carrosel-container">
+                <div class="carrosel-wrapper">
+                    <button class="btn-scroll btn-left" aria-label="Rolar para a esquerda">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carrosel-track">
+                        <a href="https://doi.org/10.1109/INDUSCON66435.2025.11241241" target="_blank" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <span style="font-size: 0.8em; color: #777; text-transform: uppercase; letter-spacing: 1px;">Artigo Acadêmico</span>
+                                <h3>Machine Learning for Forecasting Public Transport Delays: A Case Study for Smart Cities Applications</h3>
+                                <p>This study explores the application of Machine Learning techniques to predict delays in a public bus system, using the city of Curitiba, Brazil, as a case study. Leveraging historical data on vehicle operations, the research frames the problem as a binary classification task, determining whether a bus is “DELAYED” or “ON TIME” at a specific moment.</p>
+                                <span class="ler-mais">Acessar o Artigo <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.even3.com.br/anais/seisicite2024/968618-identificacao-de-padroes-de-atrasos-no-transporte-publico-de-curitiba" target="_blank" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <span style="font-size: 0.8em; color: #777; text-transform: uppercase; letter-spacing: 1px;">Iniciação Científica</span>
+                                <h3>Identificação de Padrões De Atrasos no Transporte Público de Curitiba</h3>
+                                <p>Este estudo identifica padrões de atrasos no transporte público de Curitiba, focando nas linhas do sistema Bus Rapid Transit (BRT). Utilizamos análise de dados para modelagem e identificação de pontos críticos em cinco linhas principais com dados extraídos das APIs da Urbanização de Curitiba S.A. (URBS).</p>
+                                <span class="ler-mais">Acessar artigo <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="https://aisel.aisnet.org/isla2025/22/" target="_blank" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <span style="font-size: 0.8em; color: #777; text-transform: uppercase; letter-spacing: 1px;">Artigo Acadêmico</span>
+                                <h3>Variação Altimétrica nas Rotas do Transporte Coletivo</h3>
+                                <p>Efficient vehicle maintenance is vital for mobility, logistics, and construction companies. Although timely maintenance decisions have traditionally relied on data analysis and forecasting, manufacturer services are often costly or require additional infrastructure. We propose a new method to overcome these limitations by leveraging existing route‑planning features to develop a vehicle wear index from GIS data. In this context, this work‑in‑progress addresses the challenge of accurately quantifying elevation variation along Curitiba’s public transport routes.</p>
+                                <span class="ler-mais">Acessar publicação <i class="fa-solid fa-arrow-right"></i></span>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <button class="btn-scroll btn-right" aria-label="Rolar para a direita">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- NOVA SEÇÃO: Vídeos -->
+        <section id="videos" aria-labelledby="titulo-videos">
+            <h2 id="titulo-videos">Vídeos e Criação de Conteúdo</h2>
+            
+            <div class="carrosel-container">
+                <div class="carrosel-wrapper">
+                    <button class="btn-scroll btn-left" aria-label="Rolar para a esquerda">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="carrosel-track">
+                        <a href="https://www.youtube.com/@FelipeSnitynskiCamillo" target="_blank" rel="noopener noreferrer" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <span style="font-size: 2em; color: #ff0000; margin-bottom: 10px;"><i class="fa-brands fa-youtube"></i></span>
+                                <h3>Playlist Modelagem de Processos em Negócios</h3>
+                                <p>Playlist de vídeos sobre BPM (Estágio Inicial).</p>
+                                <span class="ler-mais">Assistir vídeo <i class="fa-solid fa-play"></i></span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/@FelipeSnitynskiCamillo" target="_blank" rel="noopener noreferrer" class="carrosel-card">
+                            <div class="card-conteudo">
+                                <span style="font-size: 2em; color: #ff0000; margin-bottom: 10px;"><i class="fa-brands fa-youtube"></i></span>
+                                <h3>Playlist de vídeos sobre Sistemas Inteligentes </h3>
+                                <p>Playlist de vídeos sobre Sistemas Inteligentes (Estágio Inicial).</p>
+                                <span class="ler-mais">Assistir vídeo <i class="fa-solid fa-play"></i></span>
+                            </div>
+                        </a>
+
+                    </div>
+                    
+                    <button class="btn-scroll btn-right" aria-label="Rolar para a direita">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
         <section id="projetos" aria-labelledby="titulo-projetos">
             <h2 id="titulo-projetos">Projetos</h2>
             
@@ -115,16 +288,10 @@
                 <img src="img/smart_cities.jpg" alt="Mapa e gráficos de análise de transporte em Smart Cities" class="img-projeto">
                 <a href="https://github.com/Feimac/IniciacaoCientifica" target="_blank" rel="noopener">Ver no GitHub</a>
             </article>
-            <article class="projeto" aria-labelledby="p4">
-                <h3 id="p3">Análise de altimetria em rotas de transporte</h3>
-                <p>Essa pesquisa surgiu a partir da disciplina de Banco de dados 2 e teve como objetivo quantificar variações altimetria para entender desgastes de componentes como por exemplo, freios, os quais sofrem maior desgaste em locais com altas variações de altimetria.</p>
-                <img src="img/smart_cities.jpg" alt="Imagem interativa" class="img-projeto">
-                <a href="https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1022&context=isla2025" target="_blank" rel="noopener">Ver Artigo publicado</a>
-            </article>
 
-            <article class="projeto" aria-labelledby="p5">
+            <article class="projeto" aria-labelledby="p4">
                 <h3 id="p4">Participação no grupo de corrida Corre UTF</h3>
-                <p>Há dois anos comecei a praticar atividades ao ar livre, mais especificamente corrida de rua. Nesse período, passei a participar do grupo de corrida da UTFPR, where além de corrermos em equipe, participamos também de projetos sociais, como realizar corridas com pessoas com deficiência visual ou motora.</p>
+                <p>Há dois anos comecei a praticar atividades ao ar livre, mais especificamente corrida de rua. Nesse período, passei a participar do grupo de corrida da UTFPR, além de corrermos em equipe, participamos também de projetos sociais, como realizar corridas com pessoas com deficiência visual ou motora.</p>
                 <img src="img/projeto_corrida.jpg" alt="Grupo de corrida Corre UTF durante uma atividade esportiva" class="img-projeto">
             </article>
         </section>
@@ -157,6 +324,7 @@
                 <button type="submit" class="btn-enviar">Enviar Mensagem</button>
             </form>
         </section>
+
     </main>
 
     <footer>

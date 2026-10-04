@@ -165,103 +165,7 @@ function dragended(event, d, simulation) {
     d.fx = null;
     d.fy = null;
 }
-    const wrappers = document.querySelectorAll('.carrosel-wrapper');
-    const reduzirMovimento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    wrappers.forEach(inicializarCarrossel);
-
-    function inicializarCarrossel(wrapper) {
-        const track    = wrapper.querySelector('.carrosel-track');
-        const btnLeft   = wrapper.querySelector('.btn-left');
-        const btnRight = wrapper.querySelector('.btn-right');
-
-        if (!track) return;
-
-        // ---------- Passo dinâmico (#2) ----------
-        function calcularPasso() {
-            const card = track.querySelector('.carrosel-card');
-            if (!card) return 340;
-            const gap = parseInt(getComputedStyle(track).gap) || 20;
-            return card.offsetWidth + gap;
-        }
-
-        function rolar(direcao) {
-            track.scrollBy({
-                left: direcao * calcularPasso(),
-                behavior: reduzirMovimento ? 'auto' : 'smooth'
-            });
-        }
-
-        if (btnLeft)  btnLeft.addEventListener('click',  () => rolar(-1));
-        if (btnRight) btnRight.addEventListener('click', () => rolar(1));
-
-        // ---------- Setas inteligentes (#1) ----------
-        function atualizarBotoes() {
-            const scrollEnd = track.scrollWidth - track.clientWidth - 1;
-            if (btnLeft)  btnLeft.disabled  = track.scrollLeft <= 0;
-            if (btnRight) btnRight.disabled = track.scrollLeft >= scrollEnd;
-            atualizarDots();
-        }
-
-        // ---------- Dots de posição (#12) ----------
-        let dotsContainer = null;
-        const cards = track.querySelectorAll('.carrosel-card');
-
-        function criarDots() {
-            if (cards.length <= 1) return;
-            dotsContainer = document.createElement('div');
-            dotsContainer.className = 'carrosel-dots';
-            dotsContainer.setAttribute('role', 'tablist');
-            dotsContainer.setAttribute('aria-label', 'Selecionar item do carrossel');
-
-            cards.forEach((card, i) => {
-                const dot = document.createElement('button');
-                dot.type = 'button';
-                dot.setAttribute('role', 'tab');
-                dot.setAttribute('aria-label', `Ir para o item ${i + 1}`);
-                dot.addEventListener('click', () => {
-                    track.scrollTo({
-                        left: card.offsetLeft - track.offsetLeft,
-                        behavior: reduzirMovimento ? 'auto' : 'smooth'
-                    });
-                });
-                dotsContainer.appendChild(dot);
-            });
-
-            // insere logo após o wrapper, dentro do container
-            wrapper.parentNode.insertBefore(dotsContainer, wrapper.nextSibling);
-        }
-
-        function atualizarDots() {
-            if (!dotsContainer) return;
-            const dots = dotsContainer.querySelectorAll('button');
-            // card "ativo" = o mais próximo do início visível do track
-            let ativo = 0;
-            let menorDist = Infinity;
-            cards.forEach((card, i) => {
-                const dist = Math.abs(card.offsetLeft - track.offsetLeft - track.scrollLeft);
-                if (dist < menorDist) { menorDist = dist; ativo = i; }
-            });
-            dots.forEach((dot, i) => {
-                dot.setAttribute('aria-current', i === ativo ? 'true' : 'false');
-            });
-        }
-
-        // ---------- Navegação por teclado (setas ← →) ----------
-        track.setAttribute('tabindex', '0');
-        track.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') { e.preventDefault(); rolar(1);  }
-            if (e.key === 'ArrowLeft')  { e.preventDefault(); rolar(-1); }
-        });
-
-        // ---------- Listeners ----------
-        track.addEventListener('scroll', atualizarBotoes, { passive: true });
-        window.addEventListener('resize', atualizarBotoes);
-
-        // ---------- Inicialização ----------
-        criarDots();
-        atualizarBotoes();
-    }
 // Agora sim vem a função de animação
 function animacaoDeDigitacao() {
     const elementoTitulo = document.getElementById("titulo-animado");
@@ -312,3 +216,4 @@ function animacaoDeDigitacao() {
 
 window.addEventListener('DOMContentLoaded', animacaoDeDigitacao);
 
+ 
